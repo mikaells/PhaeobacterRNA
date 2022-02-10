@@ -201,7 +201,7 @@ with(subset(res_WT72_dtdaB72, padj<.05 & abs(log2FoldChange)>2), points(log2Fold
 #Print genome context
 ######
 j=sort(unique(annot$Chr))[2]
-for(j in unique(annot$Chr)) {
+for(j in sort(unique(annot$Chr))) {
   
   annotChr=subset(x = annot, Chr==j )
   
@@ -210,7 +210,7 @@ for(j in unique(annot$Chr)) {
   #plot(x=annotChr$Start, -log10(res_WT72_dtdaB72_Chr@listData$padj), main=j, cex=0.2, pch=16, col=ifelse(res_WT72_dtdaB72_Chr@listData$padj<0.01,2,1))
   plot(x=annotChr$Start, abs(res_WT72_dtdaB72_Chr@listData$log2FoldChange),main=j, ylab="log2-change", cex=0.5, pch=16, col=ifelse(res_WT72_dtdaB72_Chr@listData$padj<0.01,2,1))
   
-  metChr=annotChr[grepl("zn|zinc|ferro|copper", annotChr$GeneID),]
+  metChr=annotChr[grepl("metal|Zn|zinc|ferro|iron|copper", annotChr$GeneID),]
   
   metChr_res=res_WT72_dtdaB72_Chr[metChr$GeneID,]
   
