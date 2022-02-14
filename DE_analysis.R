@@ -142,12 +142,12 @@ for(i in 1:(NROW(sigCoord)-1)) {
 
 #Printing all significant genes
 
-rownames(sigLarge)
-par(mfrow=c(5,5))
-for(i in rownames(sigLarge)) {
-  if(grepl("hypothetical",i)) next
-  plotCounts(dds, gene=i, intgroup="combi" )
-}
+# rownames(sigLarge)
+# par(mfrow=c(5,5))
+# for(i in rownames(sigLarge)) {
+#   if(grepl("hypothetical",i)) next
+#   plotCounts(dds, gene=i, intgroup="combi" )
+# }
 
 
 #looking for phages
@@ -175,6 +175,11 @@ for(i in rownames(phageRes2)) {
 
 metal=res_WT72_dtdaB72_sig[grep("metal|Zn|zinc|ferro|iron|copper",rownames(res_WT72_dtdaB72_sig),ignore.case = T),]
 metalSigLarge=subset(metal, padj<.05 & abs(log2FoldChange)>.1)
+
+metalCoord0=data.frame(annot[match(rownames(metalSigLarge),annot$GeneID),], metalSigLarge)
+metalCoord=metalCoord0[order(metalCoord0$Chr,metalCoord0$Start),]
+
+write.csv(metalCoord,"metals.csv" )
 
 par(mfrow=c(3,4))
 for(i in rownames(metalSigLarge)) {
