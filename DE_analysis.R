@@ -25,8 +25,6 @@ annot=read.table("annot.txt")
 features=read.table("features.txt")
 KEGG=data.frame(read_excel("out.emapper.annotations.xlsx", skip=2))
 
-which(rowSums(features)<20)
-min(rowSums(features))
 
 features=features[,naturalsort::naturalorder( colnames(features))]
 
@@ -102,8 +100,6 @@ plotCounts(dds, gene="prephenate dehydratase_1",  intgroup="combi", pch=16) #C
 plotCounts(dds, gene="acyl-CoA thioesterase_2",  intgroup="combi", pch=16) #D
 plotCounts(dds, gene="prephenate dehydratase_1",  intgroup="combi", pch=16) #E
 
-((counts(dds,normalized=T)+1)[380:390,])
-
 
 #####
 #5) Differential expression
@@ -116,13 +112,12 @@ res_WT72_dtdaB72 <- results(object = dds,contrast = c("combi", "WT_72h","dtdaB_7
 #look at the summary
 summary(res_WT72_dtdaB72)
 
-
+#Make overview of all genes, their coordinates and if they are differential
 AllCoord0=data.frame(annot[match(rownames(res_WT72_dtdaB72),annot$GeneID),], res_WT72_dtdaB72)
 AllCoord=AllCoord0[order(AllCoord0$Chr,AllCoord0$Start),]
 
+#write to file
 write.csv(x = AllCoord, file = "allGenes.csv")
-
-sigAllCoord[sigAllCoord$lfcSE>1,]
 
 #order by log2FoldChange rather than alphabetic, then the largest wil be on top
 #ordering by p-value might also make sense
@@ -132,7 +127,6 @@ res_WT72_dtdaB72_sig=res_WT72_dtdaB72[order(res_WT72_dtdaB72$padj),]
 
 #plot all significant and large-ish differences
 sigLarge=subset(res_WT72_dtdaB72_sig, padj<.05 & abs(log2FoldChange)>1)
-
 
 
 #Make a nice overview of architecture of significant genes
@@ -148,24 +142,10 @@ for(i in 1:(NROW(sigCoord)-1)) {
   if(sigCoord$Chr[i+1]!=sigCoord$Chr[i]) {
     sigCoord$gap[i]=0
   }
-  
 }
 
-
+#write to file
 write.csv(x = sigCoord, file = "sigGenes.csv", row.names = F)
-
-res_WT72_dtdaB72[(res_WT72_dtdaB72$lfcSE)>1,]
-
-plot(sort(res_WT72_dtdaB72$lfcSE))
-
-#Printing all significant genes
-
-# rownames(sigLarge)
-# par(mfrow=c(5,5))
-# for(i in rownames(sigLarge)) {
-#   if(grepl("hypothetical",i)) next
-#   plotCounts(dds, gene=i, intgroup="combi" )
-# }
 
 
 #looking for phages
@@ -190,10 +170,9 @@ for(i in rownames(phageRes2)) {
 }
 
  
-plotCounts(dds, gene = "phage tail tape measure protein_1", intgroup = "combi", returnData = T, col=c(rep(1,9),2,1,1))
-
-plotCounts(dds, gene = "ATP-dependent zinc metalloprotease FtsH", intgroup = "combi", returnData = F,col=c(rep(1,9),2,1,1))
-
+####
+#Look at metal genes
+####
 
 metal=res_WT72_dtdaB72_sig[grep("metal|Zn|zinc|ferro|iron|copper",rownames(res_WT72_dtdaB72_sig),ignore.case = T),]
 metalSigLarge=subset(metal, padj<.05 & abs(log2FoldChange)>.1)
