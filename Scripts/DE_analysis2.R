@@ -1,12 +1,13 @@
 rm(list=ls()); gc()
 
-writeFig=T
+writeFig=F
 writeTable=F
+doAllPlots=T
 
 source("Scripts/functions.R")
 
 if(writeFig){
-  pdf(file = "allFigs.pdf", onefile = T, width = 16,height = 12)
+  pdf(file = "Figures//allFigs.pdf", onefile = T, width = 16,height = 12)
   par(mar=c(2.5,2.5,2,0.1), mgp=c(1.4,0.4,0),font.lab=2,mfrow=c(1,1))
 }
 #####
@@ -36,6 +37,9 @@ dds <- DESeq(dds_dat)
 #3) Multivariate stuff
 #####
 
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"Multivariate", cex=3, xaxt='n')
+
 #first a heatmap
 pheatmap(log10(counts(dds, normalized=T)+1), labels_row = "")
 
@@ -53,6 +57,8 @@ pheatmap(COR[1:200,1:200], labels_col = NA,labels_row = NA, cutree_rows = 5, cut
 #####
 
 #the TDA cluster
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"TDA-Cluster", cex=3, xaxt='n')
 
 plotCounts(dds, gene="LysR family transcriptional regulator_3",     intgroup="combi", pch=16)
 plotCounts(dds, gene="LysR family transcriptional regulator_2",     intgroup="combi", pch=16) #A
@@ -106,16 +112,20 @@ if(writeTable) {
 phage1=subset(subset(AllCoord, Chr=="CP080275"), (Start>626399-10) & (End <657712+10) )
 
 par(mfrow=c(5,5))
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"Phage1", cex=3, xaxt='n')
 for(i in phage1$GeneID) {
-  plotCounts(dds, gene=i, intgroup="combi", col=c(rep(1,9),2,1,1))
+  if(doAllPlots) plotCounts(dds, gene=i, intgroup="combi", col=c(rep(1,9),2,1,1))
 }
 
 #Phage2
 phage2=subset(subset(AllCoord, Chr=="CP080275"), (Start>1889854) & (End <1905516+10) )
 
 par(mfrow=c(5,5))
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"Phage2", cex=3, xaxt='n')
 for(i in phage2$GeneID) {
-  plotCounts(dds, gene=i, intgroup="combi")
+  if(doAllPlots) plotCounts(dds, gene=i, intgroup="combi")
 }
 
 ####
@@ -132,8 +142,10 @@ if(writeTable) {
 
 #plot"
 par(mfrow=c(5,5))
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"Metals", cex=3, xaxt='n')
 for(i in MetalCoordSig[order(MetalCoordSig$padj),]$GeneID) {
-  plotCounts(dds, gene=i, intgroup="combi" ,col=c(rep(1,9),2,1,1))
+  if(doAllPlots) plotCounts(dds, gene=i, intgroup="combi" ,col=c(rep(1,9),2,1,1))
 }
 
 par(mfrow=c(1,1))
@@ -161,6 +173,10 @@ legend("topleft",legend = c( "p<0.05","lfc>2","GTA","Metal"), pt.bg = c("blue", 
 ######
 #Print genome context
 ######
+
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"Gene architecture", cex=3, xaxt='n')
+
 j=sort(unique(AllCoord$Chr))[1]
 for(j in sort(unique(AllCoord$Chr))) {
   
