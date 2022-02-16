@@ -1,0 +1,54 @@
+"Start","GeneID.x","Chr.x","End.x","Strand.x","Length.x","GeneID.y","Chr.y","End.y","Strand.y","Length.y"
+88,"OL67_004029","5",1896,"+",1808,NA,NA,NA,NA,NA
+2299,"OL67_004030","5",6690,"+",4391,"non-ribosomal peptide synthetase","CP080279",6690,"+",4391
+6936,"OL67_004031","5",7712,"+",776,"amino acid ABC transporter substrate-binding protein","CP080279",7712,"+",776
+7721,"OL67_004032","5",8395,"+",674,"amino acid ABC transporter permease","CP080279",8395,"+",674
+8392,"OL67_004033","5",9147,"+",755,"amino acid ABC transporter ATP-binding protein","CP080279",9147,"+",755
+9288,"OL67_004034","5",9494,"-",206,"hypothetical protein","CP080279",9494,"-",206
+9676,"OL67_004035","5",10401,"-",725,"YjbF family lipoprotein","CP080279",10401,"-",725
+10398,"OL67_004036","5",12596,"-",2198,"YjbH domain-containing protein","CP080279",12596,"-",2198
+12901,"OL67_004037","5",14775,"-",1874,"polysaccharide biosynthesis protein","CP080279",14775,"-",1874
+15280,"OL67_004038","5",15891,"-",611,"sugar transferase","CP080279",15891,"-",611
+15888,"OL67_004039","5",16853,"-",965,"NAD-dependent epimerase/dehydratase family protein","CP080279",16853,"-",965
+16962,"OL67_004040","5",18101,"+",1139,"polysaccharide biosynthesis/export family protein","CP080279",18101,"+",1139
+18388,"OL67_004041","5",19275,"+",887,NA,NA,NA,NA,NA
+19276,"OL67_004042","5",20166,"-",890,"glucose-1-phosphate thymidylyltransferase RfbA","CP080279",20166,"-",890
+20163,"OL67_004043","5",21011,"-",848,"dTDP-4-dehydrorhamnose reductase","CP080279",21011,"-",848
+21163,"OL67_004044","5",22215,"-",1052,"dTDP-glucose 4%2C6-dehydratase","CP080279",22215,"-",1052
+22219,"OL67_004045","5",22773,"-",554,"dTDP-4-dehydrorhamnose 3%2C5-epimerase","CP080279",22773,"-",554
+22984,"OL67_004046","5",24435,"+",1451,"M10 family metallopeptidase C-terminal domain-containing protein","CP080279",24435,"+",1451
+24517,"OL67_004047","5",26712,"-",2195,"hypothetical protein","CP080279",26712,"-",2195
+26985,"OL67_004048","5",28253,"+",1268,"DUF2793 domain-containing protein","CP080279",28253,"+",1268
+28285,"OL67_004049","5",29706,"-",1421,"mannose-1-phosphate guanylyltransferase/mannose-6-phosphate isomerase","CP080279",29706,"-",1421
+29833,"OL67_004050","5",30822,"-",989,"GDP-L-fucose synthase","CP080279",30822,"-",989
+30827,"OL67_004051","5",31945,"-",1118,"GDP-mannose 4%2C6-dehydratase","CP080279",31945,"-",1118
+32117,"OL67_004052","5",33424,"-",1307,"HlyD family type I secretion periplasmic adaptor subunit","CP080279",33424,"-",1307
+33421,"OL67_004053","5",35310,"-",1889,"type I secretion system permease/ATPase","CP080279",35310,"-",1889
+35425,"OL67_004054","5",36516,"+",1091,NA,NA,NA,NA,NA
+35740,NA,NA,NA,NA,NA,"sulfotransferase family protein","CP080279",36516,"+",776
+37405,"OL67_004055","5",38874,"+",1469,NA,NA,NA,NA,NA
+38593,NA,NA,NA,NA,NA,"hypothetical protein","CP080279",38874,"+",281
+39020,"OL67_004056","5",40039,"-",1019,"hypothetical protein","CP080279",40039,"-",1019
+40036,"OL67_004057","5",41712,"-",1676,"glycosyltransferase family 4 protein","CP080279",41712,"-",1676
+41822,"OL67_004058","5",42739,"-",917,"glycosyltransferase family 2 protein","CP080279",42739,"-",917
+42736,"OL67_004059","5",44055,"-",1319,"hypothetical protein","CP080279",44046,"-",1310
+44195,"OL67_004060","5",45346,"-",1151,"UDP-galactopyranose mutase","CP080279",45346,"-",1151
+45507,"OL67_004061","5",46163,"-",656,"ABC transporter ATP-binding protein","CP080279",46163,"-",656
+46181,"OL67_004062","5",47611,"-",1430,"sugar transporter","CP080279",47611,"-",1430
+47707,"OL67_004063","5",48624,"+",917,NA,NA,NA,NA,NA
+47728,NA,NA,NA,NA,NA,"ABC transporter permease","CP080279",48624,"+",896
+48633,"OL67_004064","5",49622,"-",989,"glycosyltransferase","CP080279",49679,"-",1046
+49833,"OL67_004065","5",50843,"+",1010,"NAD-dependent epimerase/dehydratase family protein","CP080279",50843,"+",1010
+51145,"OL67_004066","5",52449,"+",1304,"UDP-glucose/GDP-mannose dehydrogenase family protein","CP080279",52449,"+",1304
+52536,"OL67_004067","5",53663,"-",1127,"ParB N-terminal domain-containing protein","CP080279",53663,"-",1127
+53766,"OL67_004068","5",55181,"-",1415,"AAA family ATPase","CP080279",55181,"-",1415
+55678,"OL67_004069","5",56691,"+",1013,"replication initiator protein A","CP080279",56691,"+",1013
+56940,"OL67_004070","5",58343,"-",1403,"HlyD family type I secretion periplasmic adaptor subunit","CP080279",58343,"-",1403
+58340,"OL67_004071","5",60097,"-",1757,"type I secretion system permease/ATPase","CP080279",60097,"-",1757
+60260,"OL67_004072","5",62575,"-",2315,"calcium-binding protein","CP080279",62575,"-",2315
+62956,"OL67_004073","5",63876,"-",920,"hypothetical protein","CP080279",63876,"-",920
+63873,"OL67_004074","5",65039,"-",1166,"helix-turn-helix transcriptional regulator","CP080279",65039,"-",1166
+65439,NA,NA,NA,NA,NA,"hypothetical protein","CP080279",65606,"+",167
+65554,"OL67_004075","5",65862,"+",308,NA,NA,NA,NA,NA
+66007,"OL67_004076","5",66792,"+",785,"LuxR C-terminal-related transcriptional regulator","CP080279",66792,"+",785
+66816,"OL67_004077","5",68060,"-",1244,"glycosyltransferase family 4 protein","CP080279",68060,"-",1244
