@@ -1,0 +1,15 @@
+"Status" "S1.bam" "S10.bam" "S11.bam" "S12.bam" "S2.bam" "S3.bam" "S4.bam" "S5.bam" "S6.bam" "S7.bam" "S8.bam" "S9.bam"
+"1" "Assigned" 6769739 8542159 6391501 9079841 5985994 8944822 7355681 6754450 9285683 5882649 7852925 10845767
+"2" "Unassigned_Unmapped" 76334 69298 71175 87901 68575 112258 34501 72924 64798 57897 74871 43274
+"3" "Unassigned_Read_Type" 0 0 0 0 0 0 0 0 0 0 0 0
+"4" "Unassigned_Singleton" 0 0 0 0 0 0 0 0 0 0 0 0
+"5" "Unassigned_MappingQuality" 0 0 0 0 0 0 0 0 0 0 0 0
+"6" "Unassigned_Chimera" 0 0 0 0 0 0 0 0 0 0 0 0
+"7" "Unassigned_FragmentLength" 0 0 0 0 0 0 0 0 0 0 0 0
+"8" "Unassigned_Duplicate" 0 0 0 0 0 0 0 0 0 0 0 0
+"9" "Unassigned_MultiMapping" 0 0 0 0 0 0 0 0 0 0 0 0
+"10" "Unassigned_Secondary" 0 0 0 0 0 0 0 0 0 0 0 0
+"11" "Unassigned_NonSplit" 0 0 0 0 0 0 0 0 0 0 0 0
+"12" "Unassigned_NoFeatures" 78892 246506 180280 309964 131250 208089 187973 155749 214900 157824 258560 212564
+"13" "Unassigned_Overlapping_Length" 0 0 0 0 0 0 0 0 0 0 0 0
+"14" "Unassigned_Ambiguity" 191584 254591 182437 213037 196738 286704 240326 224092 315755 164155 220075 290865
