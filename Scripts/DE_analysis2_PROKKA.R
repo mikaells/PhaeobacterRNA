@@ -187,15 +187,15 @@ for(j in sort(unique(AllCoord$Chr))) {
   with(ChrCoord,plot(x=Start, abs(log2FoldChange),main=j, ylab="log2-change", pch=16,col=0))
   abline(v = seq(from=0, to=max(ChrCoord$End),length.out=20), col="grey90")
   
-  if(j=="CP080275") {
+  if(j=="1") {
     lines(x=c(626399, 657712), y=c(-.1,-.1), col=5, lwd=5)
     lines(x=c(1889854, 1905516), y=c(-.1,-.1), col=5, lwd=5)
-    rect(xleft = 626399, ybottom = 0,xright = 657712,ytop = max(ChrCoord$log2FoldChange), col = "grey90", lty = 0)
-    rect(xleft = 1889854, ybottom = 0,xright = 1905516,ytop = max(ChrCoord$log2FoldChange), col = "grey90", lty = 0)
+    rect(xleft = 626399, ybottom = 0,xright = 657712,ytop = max(ChrCoord$log2FoldChange, na.rm = T), col = "grey90", lty = 0)
+    rect(xleft = 1889854, ybottom = 0,xright = 1905516,ytop = max(ChrCoord$log2FoldChange, na.rm=T), col = "grey90", lty = 0)
   }
   
   with(ChrCoord,points(x=Start, abs(log2FoldChange),main=j, ylab="log2-change", pch=16, cex=ifelse(padj<0.03,.8,.1), col=ifelse(padj<0.01,2,1)))
-  with(subset(MetalCoordSig, Chr==j), points(x=Start, abs(log2FoldChange), cex=1, pch=21, bg=4))
+  #with(subset(MetalCoordSig, Chr==j), points(x=Start, abs(log2FoldChange), cex=1, pch=21, bg=4))
 }  
 
 if(writeFig){
