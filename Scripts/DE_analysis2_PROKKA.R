@@ -103,7 +103,7 @@ SigCoord=subset(AllCoord, padj<0.05 & abs(log2FoldChange)>1)
 
 #write to file
 if(writeTable) {
-  write.csv(x = sigCoord, file = "PROKKA_summaries/sigGenes.csv", row.names = F)
+  write.csv(x = SigCoord, file = "PROKKA_summaries/sigGenes.csv", row.names = F)
 }
 
 ######
