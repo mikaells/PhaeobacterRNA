@@ -76,6 +76,8 @@ plotCounts(dds, gene="prephenate dehydratase_1",                    intgroup="co
 #note notation for the contrast argument is first the variable and next the groups to compare  
 res_WT72_dtdaB72 <- results(object = dds,contrast = c("combi", "WT_72h","dtdaB_72h"))
 
+summary(res_WT72_dtdaB72)
+
 #Make overview of all genes, their coordinates and if they are differential
 AllCoord0=data.frame(annot[match(rownames(res_WT72_dtdaB72),annot$GeneID),], res_WT72_dtdaB72)
 AllCoord=AllCoord0[order(AllCoord0$Chr,AllCoord0$Start),]

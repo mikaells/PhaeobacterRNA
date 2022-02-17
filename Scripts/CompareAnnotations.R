@@ -3,7 +3,7 @@ rm(list=ls())
 library(Rsubread)
 
 safA=flattenGTF(
-  GTFfile =  "PROKKA_03102021_correct_locus_tag.gff", 
+  GTFfile =  "Data/PROKKA_03102021_correct_locus_tag.gff", 
   GTF.featureType = "CDS",
   GTF.attrType = "locus_tag",#"product",
   # the option specifying the merging algorithm
@@ -16,7 +16,7 @@ safA2$Length=safA2$End - safA2$Start
 
 
 safB=flattenGTF(
-  GTFfile =  "Phaeobacter_S26_PGAP_220208.gff", 
+  GTFfile =  "Data/Phaeobacter_S26_PGAP_220208.gff", 
   GTF.featureType = "CDS",
   GTF.attrType = "product",
   # the option specifying the merging algorithm
@@ -45,6 +45,6 @@ for(i in 2:5) {
   both_chr_all=rbind(both_chr_all, both_chr )
 }
 
-write.csv(x = both_chr, file = "BothAnnotations.csv", row.names = F)
+write.csv(x = both_chr_all, file = "BothAnnotations.csv", row.names = F)
 
 
