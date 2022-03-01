@@ -2,7 +2,7 @@ rm(list=ls()); gc()
 
 writeFig=F
 writeTable=F
-doAllPlots=T
+doAllPlots=F
 
 source("Scripts/functions.R")
 
@@ -51,6 +51,45 @@ plotPCA(vsdata, intgroup="combi")
 #Finding co-occuring genes
 COR=cor(t((counts(dds, normalized=T))),method = "spear")
 pheatmap(COR[1:200,1:200], labels_col = NA,labels_row = NA, cutree_rows = 5, cutree_cols = 5)
+
+subset=1:300
+library(igraph)
+
+COR[abs(COR)<0.9]=0
+
+network=graph_from_adjacency_matrix(COR[subset,subset], weighted=T, mode="undirected", diag=F)
+
+l=layout_with_fr(network) 
+
+
+plot(l, col=ifelse(AllCoord$padj[subset]<0.05,2,1))
+
+plot(x = network,  
+     axes=F,rescale=T,layout=l, 
+     # === vertex
+     vertex.color = ifelse(AllCoord$padj[subset]<0.05,2,1),# clusCols,#c("black","red")[factor(meta$Date)],   # Node color
+     #vertex.frame.color = ifelse(meta$Date=="Old", "grey70","black"),# Node border color
+     #vertex.shape=ifelse(meta$Date=="NCBI", "square","circle"),                        # One of “none”, “circle”, “square”, “csquare”, “rectangle” “crectangle”, “vrectangle”, “pie”, “raster”, or “sphere”
+     vertex.size=5,#log(AllCoord$log2FoldChange[1:500]+1.1),#sqrt(meta$Length)/50,                               # Size of the node (default is 15)
+     vertex.size2=NA,                               # The second size of the node (e.g. for a rectangle)
+     
+     # === vertex label
+     vertex.label="",#translationTable2$nodeNames,                 # Character vector used to label the nodes
+     vertex.label.color="black",
+     vertex.label.font=2,                          # Font: 1 plain, 2 bold, 3, italic, 4 bold italic, 5 symbol
+     vertex.label.cex=.8,                         # Font size (multiplication factor, device-dependent)
+     vertex.label.dist=0,                          # Distance between the label and the vertex
+     vertex.label.degree=0 ,                      # The position of the label in relation to the vertex (use pi)
+     
+     edge.color=color.gradient(log(E(network)$weight+1),colors = c("green","yellow","red")),#"grey50",                           # Edge color
+     edge.width=E(network)$weight,#edge.betweenness(network)*0.01,                                 # Edge width, defaults to 1
+     edge.arrow.size=1,                            # Arrow size, defaults to 1
+     edge.arrow.width=1,                           # Arrow width, defaults to 1
+     edge.lty="solid",                             # Line type, could be 0 or “blank”, 1 or “solid”, 2 or “dashed”, 3 or “dotted”, 4 or “dotdash”, 5 or “longdash”, 6 or “twodash”
+     edge.curved=0.3      ,                        # Edge curvature, range 0-1 (FALSE sets it to 0, TRUE to 0.5)
+     #axes=T
+     #xlim=c(min(l),max(l)),ylim=c(min(l),max(l))#, asp = 0
+)
 
 #####
 #4) individual genes
@@ -152,6 +191,28 @@ for(i in MetalCoordSig[order(MetalCoordSig$padj),]$GeneID) {
 
 par(mfrow=c(1,1))
 
+####
+#Look at flagella  genes
+####
+
+#flagCoords=AllCoord[grep("flag", AllCoord$GeneID,ignore.case = T),]
+flagCoords=AllCoord[AllCoord$Start>3630916 & AllCoord$Start < 3661198,]
+
+flagCoordsSig=subset(flagCoords, padj<.05 & abs(log2FoldChange)>.1)
+#write to file
+if(writeTable) {
+  write.csv(flagCoords,"Summaries/flagella.csv" )
+}
+
+#plot"
+par(mfrow=c(5,5))
+plot(0,0, col=0,xaxt='n',yaxt='n',frame.plot=F, xlab="",ylab="", ann=F)
+text(0,0,"Flagella", cex=3, xaxt='n')
+for(i in flagCoordsSig[order(flagCoordsSig$padj),]$GeneID) {
+   plotCounts(dds, gene=i, intgroup="combi" ,col=c(rep(1,9),2,1,1))
+}
+
+par(mfrow=c(1,1))
 #####
 #6) Volcano plot
 #####

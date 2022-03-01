@@ -15,6 +15,10 @@ library(readxl)
 #setup pretty plotting parameters
 par(mar=c(2.5,2.5,2,0.1), mgp=c(1.4,0.4,0),font.lab=2,mfrow=c(1,1))
 
+color.gradient <- function(x, colors=c("red","yellow","green"), colsteps=100) {
+  return( colorRampPalette(colors) (colsteps) [ findInterval(x, seq(min(x),max(x), length.out=colsteps)) ] )
+}
+
 ReadData = function(statsPath="Data/stats.txt", annotPath="Data/annot.txt", featurePath="Data/features.txt") {
   
   #Read in the full data set
